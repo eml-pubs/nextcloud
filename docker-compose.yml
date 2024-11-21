@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud
+    ports:
+      - "8585:80"  # Redirige le port 8585 de l'hôte vers le port 80 du conteneur
+    volumes:
+      - nextcloud:/var/www/html  # Volume pour la persistance des données
+    restart: always  # Redémarre automatiquement le conteneur en cas d'arrêt
+
+volumes:
+  nextcloud:
+    driver: local  # Le volume est géré localement par Docker
